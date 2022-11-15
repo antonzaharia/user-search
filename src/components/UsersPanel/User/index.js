@@ -6,7 +6,7 @@ function User({ user }) {
   return (
     <tr>
       <td className="p-4 w-4">
-        <div className="flex items-center">
+        <p className="flex items-center">
           <input
             id="checkbox-table-search-1"
             type="checkbox"
@@ -15,15 +15,15 @@ function User({ user }) {
           <label htmlFor="checkbox-table-search-1" className="sr-only">
             checkbox
           </label>
-        </div>
+        </p>
       </td>
 
       <th scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap">
         <Avatar image={user.avatar} />
-        <div className="pl-3">
-          <div className="text-base font-semibold">{user.name}</div>
-          <div className="font-normal">{user.email}</div>
-        </div>
+        <p className="pl-3">
+          <span className="text-left block text-base font-semibold">{user.name}</span>
+          <span className="block font-normal">{user.email}</span>
+        </p>
       </th>
 
       <td className="py-4 px-6 text-gray-900 whitespace-nowrap">{user.role}</td>

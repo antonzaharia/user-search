@@ -1,12 +1,12 @@
 import React from 'react'
-import User from './User'
 import PropTypes from 'prop-types'
+import User from './User'
 
 function UsersTable({ users }) {
   const renderUsers = () => users.map((user) => <User user={user} key={user.id} />)
 
   return (
-    <table className="w-full text-sm text-left text-gray-500">
+    <table className="w-full text-sm text-left text-gray-500 min-h-screen">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
           <th scope="col" className="p-4">

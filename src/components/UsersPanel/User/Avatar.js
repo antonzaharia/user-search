@@ -8,17 +8,12 @@ function Avatar({ image }) {
     const img = new Image()
     img.src = image
 
-    if (img.complete) {
+    img.onload = () => {
       setImageSrc(image)
-    } else {
-      img.onload = () => {
-        setImageSrc(image)
-      }
-      img.onerror = () => {}
     }
   }, [image])
 
-  return <img className="w-10 h-10 rounded-full" src={imageSrc} alt="User profile pic" />
+  return <img className="w-10 h-10 rounded-full object-cover" src={imageSrc} alt="User profile pic" />
 }
 
 Avatar.propTypes = {
