@@ -2,16 +2,26 @@ import React, { useEffect, useContext, useState } from 'react'
 import UsersTable from './UsersTable'
 import { Users } from '../../contexts'
 import InfiniteTable from '../InfiniteTable'
+
+const URL = 'https://raw.githubusercontent.com/klausapp/frontend-engineer-test-task/master/users.json'
 const PER_PAGE = 20
 
 const UsersPanel = (props) => {
-  const { users, visibleUsers, loadUsers, setVisibleUsers } = useContext(Users)
+  const { users, visibleUsers, setUsers, setVisibleUsers } = useContext(Users)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const loadUsers = async () => {
+      const response = await fetch(URL)
+      const result = await response.json()
+      setUsers(result['users'])
+      setVisibleUsers(result['users'].slice(0, PER_PAGE))
+    }
+
     loadUsers()
     return () => {
-      setLoading(false)
+      setLoading()
+      setVisibleUsers(users.slice(0, PER_PAGE))
     }
   }, [])
 
@@ -21,7 +31,7 @@ const UsersPanel = (props) => {
   }
 
   const renderTable = () => {
-    if (loading) {
+    if (loading || visibleUsers.length <= 0) {
       return 'Loading...'
     } else {
       return (
@@ -31,7 +41,6 @@ const UsersPanel = (props) => {
           nextPage={showMore}
           perPage={PER_PAGE}
           pageCountResetter={false}
-          className="w-full text-sm text-left text-gray-500"
         >
           <UsersTable users={visibleUsers} />
         </InfiniteTable>
