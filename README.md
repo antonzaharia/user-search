@@ -2,7 +2,7 @@
 
 - [x] Create a React app and load the JSON
 - [x] Infinite load the JSON file
-- [ ] Build a way to search the JSON
+- [x] Build a way to search the JSON
 - [ ] Debounce the search input on `keyup` event
 - [ ] Build a way to store the checked users
 - [ ] Style the page
