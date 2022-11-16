@@ -53,7 +53,7 @@ const UsersPanel = (props) => {
     if (checkedUsersIds.length > 0) {
       return (
         <div className="p-2 flex items-center gap-6">
-          <p className>
+          <p className="py-2">
             {checkedUsersIds.length} {checkedUsersIds.length === 1 ? 'user' : 'users'} selected
           </p>
           <div className="flex items-center gap-2">
@@ -65,7 +65,7 @@ const UsersPanel = (props) => {
     } else {
       return (
         <div className="p-2 flex items-center gap-6">
-          <p className>No users selected</p>
+          <p className="py-2">No users selected</p>
         </div>
       )
     }

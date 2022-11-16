@@ -49,11 +49,11 @@ function SearchForm() {
           value={searchTerm}
           onChange={handleSearchTermChange}
           onKeyUp={() => debounceSearch(searchTerm)}
-          className="placeholder:text-gray-200 placeholder:text-md placeholder:leading-input block w-full p-3 pl-10 text-md text-gray-200 border border-gray-100 rounded"
+          className="placeholder:text-gray-200 placeholder:text-md placeholder:leading-input block w-full p-2 pl-10 text-md text-gray-200 border border-gray-100 rounded"
           placeholder="Search"
         />
       </div>
-      <button className="bg-blue-500 text-white rounded px-3 py-2 leading-input">Connect users</button>
+      <button className="bg-blue-500 text-white rounded px-4 py-2 leading-input">Connect users</button>
     </form>
   )
 }

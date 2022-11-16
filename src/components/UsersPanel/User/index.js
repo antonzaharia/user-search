@@ -10,6 +10,7 @@ import TrashIcon from '../../shared/TrashIcon'
 function User({ user }) {
   const { setCheckedUsersIds, checkedUsersIds } = useContext(Checked)
   const [checked, setChecked] = useState(checkedUsersIds.includes(user.id))
+  const [actions, setActions] = useState(false)
 
   useEffect(() => {
     if (checked) {
@@ -29,14 +30,24 @@ function User({ user }) {
   }
   const renderClass = () => {
     if (checked) {
-      return 'rounded bg-gray-50 my-2 relative'
+      return 'bg-gray-50 rounded my-2 relative hover:cursor-pointer'
     } else {
-      return 'rounded bg-white my-2 relative'
+      return 'bg-white rounded my-2 relative hover:cursor-pointer'
+    }
+  }
+  const showAction = () => {
+    if (actions) {
+      return (
+        <td className="absolute flex items-center gap-2 right-5 h-[75px]">
+          <Button text="Edit" icon={<EditIcon />} />
+          <Button icon={<TrashIcon />} />
+        </td>
+      )
     }
   }
 
   return (
-    <tr className={renderClass()}>
+    <tr className={renderClass()} onMouseEnter={() => setActions(true)} onMouseLeave={() => setActions(false)}>
       <td className={checked ? 'p-4 w-4 checked' : 'p-4 w-4'}>
         <p className="flex items-center">
           <input
@@ -52,7 +63,7 @@ function User({ user }) {
         </p>
       </td>
 
-      <th scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap">
+      <th onClick={handleCheckboxChange} scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap">
         <Avatar image={user.avatar} />
         <p className="pl-3">
           <span className="text-left block text-base font-semibold">{user.name}</span>
@@ -60,11 +71,10 @@ function User({ user }) {
         </p>
       </th>
 
-      <td className="py-4 px-6 text-gray-900 whitespace-nowrap">{user.role}</td>
-      <span className="absolute flex items-center gap-2 right-5 h-[75px]">
-        <Button text="Edit" icon={<EditIcon />} />
-        <Button icon={<TrashIcon />} />
-      </span>
+      <td onClick={handleCheckboxChange} className="py-4 px-6 text-gray-900 whitespace-nowrap">
+        {user.role}
+      </td>
+      {showAction()}
     </tr>
   )
 }
