@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Avatar from './Avatar'
+import Role from './Role'
 import { Checked } from '../../../contexts/checkedUsers'
 
 import Button from '../../shared/Button'
@@ -66,13 +67,13 @@ function User({ user }) {
       <th onClick={handleCheckboxChange} scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap">
         <Avatar image={user.avatar} />
         <p className="pl-3">
-          <span className="text-left block text-base font-semibold">{user.name}</span>
-          <span className="block font-normal">{user.email}</span>
+          <span className="text-left block text-gray-600 font-normal text-md">{user.name}</span>
+          <span className="block font-normal text-gray-400 text-sm">{user.email}</span>
         </p>
       </th>
 
-      <td onClick={handleCheckboxChange} className="py-4 px-6 text-gray-900 whitespace-nowrap">
-        {user.role}
+      <td onClick={handleCheckboxChange} className="py-4 px-6 text-gray-900">
+        <Role text={user.role} />
       </td>
       {showAction()}
     </tr>

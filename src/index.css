@@ -9,6 +9,23 @@
   --background: #edf2f7;
 }
 
+.admin {
+  background-color: #EFE2FE;
+  color: #574195;
+}
+.account-manager {
+  background-color: #FEDDEB;
+  color: #710C36;
+}
+.agent {
+  background-color: #CEF1FD;
+  color: #04546F;
+}
+.external-reviewer {
+  background-color: #FEEBC8;
+  color: #91472C;
+}
+
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
