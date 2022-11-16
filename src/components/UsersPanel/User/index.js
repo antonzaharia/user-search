@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import Avatar from './Avatar'
 import { Checked } from '../../../contexts/checkedUsers'
 
+import Button from '../../shared/Button'
+import EditIcon from '../../shared/EditIcon'
+import TrashIcon from '../../shared/TrashIcon'
+
 function User({ user }) {
   const { setCheckedUsersIds, checkedUsersIds } = useContext(Checked)
   const [checked, setChecked] = useState(checkedUsersIds.includes(user.id))
@@ -25,9 +29,9 @@ function User({ user }) {
   }
   const renderClass = () => {
     if (checked) {
-      return 'rounded bg-gray-50 my-2'
+      return 'rounded bg-gray-50 my-2 relative'
     } else {
-      return 'rounded bg-white my-2'
+      return 'rounded bg-white my-2 relative'
     }
   }
 
@@ -57,6 +61,10 @@ function User({ user }) {
       </th>
 
       <td className="py-4 px-6 text-gray-900 whitespace-nowrap">{user.role}</td>
+      <span className="absolute flex items-center gap-2 right-5 h-[75px]">
+        <Button text="Edit" icon={<EditIcon />} />
+        <Button icon={<TrashIcon />} />
+      </span>
     </tr>
   )
 }

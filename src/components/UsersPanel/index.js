@@ -53,11 +53,19 @@ const UsersPanel = (props) => {
     if (checkedUsersIds.length > 0) {
       return (
         <div className="p-2 flex items-center gap-6">
-          <p className>{checkedUsersIds.length} users selected</p>
+          <p className>
+            {checkedUsersIds.length} {checkedUsersIds.length === 1 ? 'user' : 'users'} selected
+          </p>
           <div className="flex items-center gap-2">
             <Button text="Edit" icon={<EditIcon />} />
             <Button text="Delete" icon={<TrashIcon />} />
           </div>
+        </div>
+      )
+    } else {
+      return (
+        <div className="p-2 flex items-center gap-6">
+          <p className>No users selected</p>
         </div>
       )
     }
