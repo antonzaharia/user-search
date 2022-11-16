@@ -4,20 +4,21 @@ import Avatar from './Avatar'
 import { Checked } from '../../../contexts/checkedUsers'
 
 function User({ user }) {
-  const { checkedUsers, setCheckedUsers } = useContext(Checked)
-  const [checked, setChecked] = useState(checkedUsers.includes((u) => u.id === user.id))
+  const { checkedUsersIds, setCheckedUsersIds } = useContext(Checked)
+  const [checked, setChecked] = useState(checkedUsersIds.includes(user.id))
 
   useEffect(() => {
     if (checked) {
-      setCheckedUsers([...checkedUsers, user])
+      setCheckedUsersIds([...checkedUsersIds, user.id])
     } else {
-      const filteredUsers = checkedUsers.filter((u) => u.id !== user.id)
-      setCheckedUsers(filteredUsers)
+      const filteredUsers = checkedUsersIds.filter((uid) => uid !== user.id)
+      setCheckedUsersIds(filteredUsers)
     }
+
+    console.log(checkedUsersIds)
   }, [checked])
 
   const handleCheckboxChange = (event) => {
-    console.log(checkedUsers)
     setChecked(!checked)
   }
 

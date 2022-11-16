@@ -4,12 +4,12 @@ import PropTypes from 'prop-types'
 const Checked = createContext({})
 
 const CheckedProvider = ({ children }) => {
-  const [checkedUsers, setCheckedUsers] = useState([])
+  const [checkedUsersIds, setCheckedUsersIds] = useState([])
   return (
     <Checked.Provider
       value={{
-        checkedUsers,
-        setCheckedUsers,
+        checkedUsersIds,
+        setCheckedUsersIds,
       }}
     >
       {children}
