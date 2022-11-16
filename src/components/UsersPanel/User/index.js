@@ -19,17 +19,24 @@ function User({ user }) {
   const handleCheckboxChange = (event) => {
     setChecked(!checked)
   }
+  const renderClass = () => {
+    if (checked) {
+      return 'rounded bg-gray-50 my-2'
+    } else {
+      return 'rounded bg-white my-2'
+    }
+  }
 
   return (
-    <tr>
-      <td className="p-4 w-4">
+    <tr class={renderClass()}>
+      <td className={checked ? 'p-4 w-4 checked' : 'p-4 w-4'}>
         <p className="flex items-center">
           <input
             id="checkbox-table-search-1"
             onChange={handleCheckboxChange}
             checked={checked}
             type="checkbox"
-            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
+            className="w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
           />
           <label htmlFor="checkbox-table-search-1" className="sr-only">
             checkbox

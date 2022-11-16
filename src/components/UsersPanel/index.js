@@ -44,8 +44,10 @@ const UsersPanel = (props) => {
   }
 
   return (
-    <div>
-      <div>{usersCount}</div>
+    <div className="bg-white rounded-lg p-4">
+      <div className="p-2 flex gap-2">
+        <p className>{usersCount}</p>
+      </div>
       {renderTable()}
     </div>
   )

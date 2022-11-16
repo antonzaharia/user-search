@@ -35,14 +35,14 @@ function SearchForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-3">
-      <label for="default-search" class="text-sm font-medium text-gray-900 sr-only">
+      <label for="default-search" className="text-sm font-medium text-gray-900 sr-only">
         Search
       </label>
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+      <div className="relative">
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <svg
             aria-hidden="true"
-            class="w-5 h-5 text-gray-200"
+            className="w-5 h-5 text-gray-200"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ function SearchForm() {
           value={searchTerm}
           onChange={handleSearchTermChange}
           onKeyUp={() => debounceSearch(searchTerm)}
-          class="placeholder:text-gray-200 placeholder:text-md placeholder:leading-input block w-full p-3 pl-10 text-md text-gray-200 border border-gray-100 rounded"
+          className="placeholder:text-gray-200 placeholder:text-md placeholder:leading-input block w-full p-3 pl-10 text-md text-gray-200 border border-gray-100 rounded"
           placeholder="Search"
         />
       </div>

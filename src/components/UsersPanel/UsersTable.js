@@ -8,23 +8,23 @@ function UsersTable({ users }) {
   return (
     <table className="w-full text-sm text-left text-gray-500 min-h-screen">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-        <tr>
+        <tr className="bg-white">
           <th scope="col" className="p-4">
             <span className="flex items-center">
               <input
                 id="checkbox-all-search"
                 type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
+                className="w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
               />
               <label htmlFor="checkbox-all-search" className="sr-only">
                 checkbox
               </label>
             </span>
           </th>
-          <th scope="col" className="py-3 px-6">
+          <th scope="col" className="normal-case py-3 px-6 font-medium">
             User
           </th>
-          <th scope="col" className="py-3 px-6">
+          <th scope="col" className="normal-case py-3 px-6 font-medium">
             Permission
           </th>
         </tr>
