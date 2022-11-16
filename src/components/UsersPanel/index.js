@@ -6,6 +6,7 @@ import { Checked } from '../../contexts/checkedUsers'
 
 import Button from '../shared/Button'
 import EditIcon from '../shared/EditIcon'
+import TrashIcon from '../shared/TrashIcon'
 
 const UsersPanel = (props) => {
   const { checkedUsersIds } = useContext(Checked)
@@ -48,13 +49,23 @@ const UsersPanel = (props) => {
       )
     }
   }
+  const renderHeader = () => {
+    if (checkedUsersIds.length > 0) {
+      return (
+        <div className="p-2 flex items-center gap-6">
+          <p className>{checkedUsersIds.length} users selected</p>
+          <div className="flex items-center gap-2">
+            <Button text="Edit" icon={<EditIcon />} />
+            <Button text="Delete" icon={<TrashIcon />} />
+          </div>
+        </div>
+      )
+    }
+  }
 
   return (
     <div className="bg-white rounded-lg p-4">
-      <div className="p-2 flex gap-2">
-        {checkedUsersIds.length > 0 && <p className>{checkedUsersIds.length} users selected</p>}
-        <Button icon={<EditIcon />} />
-      </div>
+      {renderHeader()}
       {renderTable()}
     </div>
   )
