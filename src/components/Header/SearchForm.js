@@ -30,9 +30,14 @@ function SearchForm() {
     []
   )
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input type="text" value={searchTerm} onChange={handleSearchTermChange} onKeyUp={() => debounceSearch(searchTerm)} />
+      <button>Connect users</button>
     </form>
   )
 }
