@@ -1,17 +1,16 @@
 import React, { useState, useContext } from 'react'
 import { Users } from '../../contexts'
 
-const URL = 'https://raw.githubusercontent.com/klausapp/frontend-engineer-test-task/master/users.json'
 const PER_PAGE = 20
 
 function SearchForm() {
-  const { setUsers, setVisibleUsers } = useContext(Users)
+  const { setUsers, setVisibleUsers, fetchUsers } = useContext(Users)
   const [searchTerm, setSearchTerm] = useState('')
 
   const regex = new RegExp(searchTerm, 'gi')
 
-  var search = (usersBulk) =>
-    usersBulk['users'].filter((user) => {
+  var filterBySearchTerm = (usersBulk) =>
+    usersBulk.filter((user) => {
       return regex.test(user.name) || regex.test(user.email) || regex.test(user.role)
     })
 
@@ -20,10 +19,8 @@ function SearchForm() {
   }
 
   const handleSearch = async (event) => {
-    const response = await fetch(URL)
-    const result = await response.json()
-
-    let newUsers = search(result)
+    const result = await fetchUsers()
+    let newUsers = filterBySearchTerm(result)
 
     setUsers(newUsers)
     setVisibleUsers(newUsers.slice(0, PER_PAGE))

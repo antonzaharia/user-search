@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-const PER_PAGE = 20
+const URL = 'https://raw.githubusercontent.com/klausapp/frontend-engineer-test-task/master/users.json'
 
 const Users = createContext({})
 
@@ -14,9 +14,10 @@ const UsersProvider = ({ children }) => {
     setUsersCount(users.length)
   }, [users])
 
-  const updateUsers = (result) => {
-    setUsers(result['users'])
-    setVisibleUsers(result['users'].slice(0, PER_PAGE))
+  const fetchUsers = async () => {
+    const response = await fetch(URL)
+    const result = await response.json()
+    return result['users']
   }
 
   return (
@@ -26,9 +27,9 @@ const UsersProvider = ({ children }) => {
         setUsers,
         visibleUsers,
         setVisibleUsers,
-        updateUsers,
         usersCount,
         setUsersCount,
+        fetchUsers,
       }}
     >
       {children}
