@@ -53,7 +53,7 @@ function SearchForm() {
           placeholder="Search"
         />
       </div>
-      <button className="bg-blue-500 text-white rounded px-4 py-2 leading-input">Connect users</button>
+      <button className="bg-blue-600 text-white rounded px-4 py-2 leading-input">Connect users</button>
     </form>
   )
 }

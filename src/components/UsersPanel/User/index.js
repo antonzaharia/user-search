@@ -49,7 +49,7 @@ function User({ user }) {
 
   return (
     <tr className={renderClass()} onMouseEnter={() => setActions(true)} onMouseLeave={() => setActions(false)}>
-      <td className={checked ? 'p-4 w-4 checked' : 'p-4 w-4'}>
+      <td className={checked ? 'p-4 w-1 checked' : 'p-4 w-4'}>
         <p className="flex items-center">
           <input
             id="checkbox-table-search-1"
@@ -64,7 +64,11 @@ function User({ user }) {
         </p>
       </td>
 
-      <th onClick={handleCheckboxChange} scope="row" className="flex items-center py-4 px-6 text-gray-900 whitespace-nowrap">
+      <th
+        onClick={handleCheckboxChange}
+        scope="row"
+        className="flex items-center py-4 px-6 pl-0 text-gray-900 whitespace-nowrap"
+      >
         <Avatar image={user.avatar} />
         <p className="pl-3">
           <span className="text-left block text-gray-600 font-normal text-md">{user.name}</span>

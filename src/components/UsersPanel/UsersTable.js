@@ -4,6 +4,8 @@ import User from './User'
 import { Checked } from '../../contexts/checkedUsers'
 import { Users } from '../../contexts/users'
 
+import ArrowDownIcon from '../shared/ArrowDownIcon'
+
 function UsersTable(props) {
   const { users } = useContext(Users)
   const { setCheckedUsersIds } = useContext(Checked)
@@ -24,23 +26,21 @@ function UsersTable(props) {
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
         <tr className="bg-white">
           <th scope="col" className="p-4">
-            <span className="flex items-center">
+            <span className="">
               <input
                 id="checkbox-all-search"
                 onChange={() => setCheckedAll(!checkedAll)}
                 type="checkbox"
-                className="w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
+                className="ml-1 w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
               />
-              <label htmlFor="checkbox-all-search" className="sr-only">
-                checkbox
-              </label>
             </span>
           </th>
-          <th scope="col" className="normal-case py-3 px-6 font-medium">
+          <th scope="col" className="normal-case py-3 px-6 pl-0 font-medium text-gray-400">
             User
           </th>
-          <th scope="col" className="normal-case py-3 px-6 font-medium">
+          <th scope="col" className="normal-case py-3 px-6 font-medium flex gap-1 text-gray-400">
             Permission
+            <ArrowDownIcon />
           </th>
         </tr>
       </thead>
