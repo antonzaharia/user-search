@@ -19,7 +19,6 @@ const UsersProvider = ({ children }) => {
   const fetchUsers = async () => {
     const response = await fetch(URL)
     const result = await response.json()
-    console.log(checkedUsers)
     return result['users']
   }
 

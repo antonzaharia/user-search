@@ -14,8 +14,6 @@ function User({ user }) {
       const filteredUsers = checkedUsersIds.filter((uid) => uid !== user.id)
       setCheckedUsersIds(filteredUsers)
     }
-
-    console.log(checkedUsersIds)
   }, [checked])
 
   const handleCheckboxChange = (event) => {
