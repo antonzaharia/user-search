@@ -10,6 +10,7 @@ const UsersProvider = ({ children }) => {
   const [users, setUsers] = useState([])
   const [usersCount, setUsersCount] = useState(0)
   const [visibleUsers, setVisibleUsers] = useState([])
+  const [checkedUsers, setCheckedUsers] = useState([])
 
   useEffect(() => {
     setUsersCount(users.length)
@@ -18,6 +19,7 @@ const UsersProvider = ({ children }) => {
   const fetchUsers = async () => {
     const response = await fetch(URL)
     const result = await response.json()
+    console.log(checkedUsers)
     return result['users']
   }
 
@@ -38,6 +40,8 @@ const UsersProvider = ({ children }) => {
         setVisibleUsers,
         usersCount,
         setUsersCount,
+        checkedUsers,
+        setCheckedUsers,
         fetchUsers,
         setAllUsers,
       }}

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useCallback } from 'react'
-import { Users } from '../../contexts'
+import { Users } from '../../contexts/users'
 import { debounce } from '../../utils'
 
 function SearchForm() {
@@ -18,7 +18,6 @@ function SearchForm() {
   }
 
   const triggerSearch = async (term) => {
-    console.log(term)
     const result = await fetchUsers()
     let newUsers = filterBySearchTerm(result, term)
 

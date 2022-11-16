@@ -1,14 +1,34 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Avatar from './Avatar'
+import { Checked } from '../../../contexts/checkedUsers'
 
 function User({ user }) {
+  const { checkedUsers, setCheckedUsers } = useContext(Checked)
+  const [checked, setChecked] = useState(checkedUsers.includes((u) => u.id === user.id))
+
+  useEffect(() => {
+    if (checked) {
+      setCheckedUsers([...checkedUsers, user])
+    } else {
+      const filteredUsers = checkedUsers.filter((u) => u.id !== user.id)
+      setCheckedUsers(filteredUsers)
+    }
+  }, [checked])
+
+  const handleCheckboxChange = (event) => {
+    console.log(checkedUsers)
+    setChecked(!checked)
+  }
+
   return (
     <tr>
       <td className="p-4 w-4">
         <p className="flex items-center">
           <input
             id="checkbox-table-search-1"
+            onChange={handleCheckboxChange}
+            checked={checked}
             type="checkbox"
             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
           />

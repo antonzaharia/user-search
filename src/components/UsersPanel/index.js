@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import UsersTable from './UsersTable'
 import InfiniteTable from '../InfiniteTable'
-import { Users } from '../../contexts'
+import { Users } from '../../contexts/users'
 
 const UsersPanel = (props) => {
   const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
