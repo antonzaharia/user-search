@@ -4,6 +4,9 @@ import InfiniteTable from '../InfiniteTable'
 import { Users } from '../../contexts/users'
 import { Checked } from '../../contexts/checkedUsers'
 
+import Button from '../shared/Button'
+import EditIcon from '../shared/EditIcon'
+
 const UsersPanel = (props) => {
   const { checkedUsersIds } = useContext(Checked)
   const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
@@ -50,6 +53,7 @@ const UsersPanel = (props) => {
     <div className="bg-white rounded-lg p-4">
       <div className="p-2 flex gap-2">
         {checkedUsersIds.length > 0 && <p className>{checkedUsersIds.length} users selected</p>}
+        <Button icon={<EditIcon />} />
       </div>
       {renderTable()}
     </div>
