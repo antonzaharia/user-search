@@ -1,6 +1,6 @@
 import Header from './components/Header'
-import { UsersProvider } from './contexts'
 import UsersPanel from './components/UsersPanel'
+import { UsersProvider } from './contexts'
 
 function App() {
   return (

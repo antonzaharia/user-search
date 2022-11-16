@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react'
 import UsersTable from './UsersTable'
-import { Users } from '../../contexts'
 import InfiniteTable from '../InfiniteTable'
+import { Users } from '../../contexts'
 
 const URL = 'https://raw.githubusercontent.com/klausapp/frontend-engineer-test-task/master/users.json'
 const PER_PAGE = 20
