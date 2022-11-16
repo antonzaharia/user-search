@@ -21,7 +21,6 @@
   table {
     border-collapse: separate;
     border-spacing: 0 10px;
-    margin-top: -10px; /* correct offset on first border spacing if desired */
   }
   td {
     border-left: solid 4px transparent;

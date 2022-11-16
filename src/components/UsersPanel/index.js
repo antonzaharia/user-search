@@ -2,9 +2,12 @@ import React, { useEffect, useContext, useState } from 'react'
 import UsersTable from './UsersTable'
 import InfiniteTable from '../InfiniteTable'
 import { Users } from '../../contexts/users'
+import { Checked } from '../../contexts/checkedUsers'
 
 const UsersPanel = (props) => {
+  const { checkedUsersIds, setCheckedUsersIds } = useContext(Checked)
   const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
+
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -46,7 +49,7 @@ const UsersPanel = (props) => {
   return (
     <div className="bg-white rounded-lg p-4">
       <div className="p-2 flex gap-2">
-        <p className>{usersCount}</p>
+        {checkedUsersIds.length > 0 && <p className>{checkedUsersIds.length} users selected</p>}
       </div>
       {renderTable()}
     </div>
