@@ -1,7 +1,13 @@
 import React from 'react'
+import SearchForm from './SearchForm'
 
 function Header() {
-  return <div>Account users</div>
+  return (
+    <header>
+      <div>Account users</div>
+      <SearchForm />
+    </header>
+  )
 }
 
 export default Header

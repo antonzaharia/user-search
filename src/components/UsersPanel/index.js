@@ -7,21 +7,21 @@ const URL = 'https://raw.githubusercontent.com/klausapp/frontend-engineer-test-t
 const PER_PAGE = 20
 
 const UsersPanel = (props) => {
-  const { users, visibleUsers, setUsers, setVisibleUsers } = useContext(Users)
+  const { users, visibleUsers, setUsers, setVisibleUsers, usersCount } = useContext(Users)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadUsers = async () => {
       const response = await fetch(URL)
       const result = await response.json()
+
       setUsers(result['users'])
       setVisibleUsers(result['users'].slice(0, PER_PAGE))
     }
 
     loadUsers()
     return () => {
-      setLoading()
-      setVisibleUsers(users.slice(0, PER_PAGE))
+      setLoading(false)
     }
   }, [])
 
@@ -40,7 +40,7 @@ const UsersPanel = (props) => {
           itemCount={visibleUsers.length}
           nextPage={showMore}
           perPage={PER_PAGE}
-          pageCountResetter={false}
+          pageCountResetter={usersCount}
         >
           <UsersTable users={visibleUsers} />
         </InfiniteTable>
@@ -48,7 +48,12 @@ const UsersPanel = (props) => {
     }
   }
 
-  return renderTable()
+  return (
+    <div>
+      <div>{usersCount}</div>
+      {renderTable()}
+    </div>
+  )
 }
 
 export default UsersPanel
