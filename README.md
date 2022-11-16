@@ -4,7 +4,7 @@
 - [x] Infinite load the JSON file
 - [x] Build a way to search the JSON
 - [x] Debounce the search input on `keyup` event
-- [ ] Build a way to store the checked users
+- [x] Build a way to store the checked users
 - [ ] Style the page
 - [ ] Deploy to Firebase
 
