@@ -5,7 +5,7 @@ import { Users } from '../../contexts/users'
 import { Checked } from '../../contexts/checkedUsers'
 
 const UsersPanel = (props) => {
-  const { checkedUsersIds, setCheckedUsersIds } = useContext(Checked)
+  const { checkedUsersIds } = useContext(Checked)
   const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
 
   const [loading, setLoading] = useState(true)

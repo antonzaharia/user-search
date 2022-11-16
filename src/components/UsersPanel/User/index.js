@@ -4,7 +4,7 @@ import Avatar from './Avatar'
 import { Checked } from '../../../contexts/checkedUsers'
 
 function User({ user }) {
-  const { checkedUsersIds, setCheckedUsersIds } = useContext(Checked)
+  const { setCheckedUsersIds, checkedUsersIds } = useContext(Checked)
   const [checked, setChecked] = useState(checkedUsersIds.includes(user.id))
 
   useEffect(() => {
@@ -15,6 +15,10 @@ function User({ user }) {
       setCheckedUsersIds(filteredUsers)
     }
   }, [checked])
+
+  useEffect(() => {
+    setChecked(checkedUsersIds.includes(user.id))
+  }, [checkedUsersIds])
 
   const handleCheckboxChange = (event) => {
     setChecked(!checked)
@@ -28,7 +32,7 @@ function User({ user }) {
   }
 
   return (
-    <tr class={renderClass()}>
+    <tr className={renderClass()}>
       <td className={checked ? 'p-4 w-4 checked' : 'p-4 w-4'}>
         <p className="flex items-center">
           <input
