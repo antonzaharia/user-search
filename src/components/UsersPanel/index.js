@@ -3,18 +3,15 @@ import UsersTable from './UsersTable'
 import InfiniteTable from '../InfiniteTable'
 import { Users } from '../../contexts'
 
-
-const PER_PAGE = 20
-
 const UsersPanel = (props) => {
-  const { users, visibleUsers, setUsers, setVisibleUsers, usersCount, fetchUsers } = useContext(Users)
+  const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const loadUsers = async () => {
       const result = await fetchUsers()
-      setUsers(result)
-      setVisibleUsers(result.slice(0, PER_PAGE))
+
+      setAllUsers(result)
     }
 
     loadUsers()
@@ -24,7 +21,7 @@ const UsersPanel = (props) => {
   }, [])
 
   const showMore = () => {
-    let newUsers = users.slice(visibleUsers.length, visibleUsers.length + PER_PAGE)
+    let newUsers = users.slice(visibleUsers.length, visibleUsers.length + perPage)
     setVisibleUsers([...visibleUsers, ...newUsers])
   }
 
@@ -37,7 +34,7 @@ const UsersPanel = (props) => {
           totalCount={users.length}
           itemCount={visibleUsers.length}
           nextPage={showMore}
-          perPage={PER_PAGE}
+          perPage={perPage}
           pageCountResetter={usersCount}
         >
           <UsersTable users={visibleUsers} />

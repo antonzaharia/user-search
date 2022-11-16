@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { Users } from '../../contexts'
 
-const PER_PAGE = 20
-
 function SearchForm() {
-  const { setUsers, setVisibleUsers, fetchUsers } = useContext(Users)
+  const { fetchUsers, setAllUsers } = useContext(Users)
   const [searchTerm, setSearchTerm] = useState('')
 
   const regex = new RegExp(searchTerm, 'gi')
@@ -22,8 +20,7 @@ function SearchForm() {
     const result = await fetchUsers()
     let newUsers = filterBySearchTerm(result)
 
-    setUsers(newUsers)
-    setVisibleUsers(newUsers.slice(0, PER_PAGE))
+    setAllUsers(newUsers)
   }
 
   return (
