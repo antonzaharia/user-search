@@ -1,12 +1,18 @@
 import React, { useEffect, useContext, useState } from 'react'
+
+// Components
 import UsersTable from './UsersTable'
 import InfiniteTable from '../InfiniteTable'
+
+// Contexts
 import { Users } from '../../contexts/users'
 import { Checked } from '../../contexts/checkedUsers'
 
+// Icons
 import Button from '../shared/Button'
 import EditIcon from '../shared/EditIcon'
 import TrashIcon from '../shared/TrashIcon'
+
 
 const UsersPanel = (props) => {
   const { checkedUsersIds } = useContext(Checked)

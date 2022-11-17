@@ -8,14 +8,14 @@ const InfiniteTable = (props) => {
   const isMounted = useRef(false)
 
   const handleObserver = (entities) => {
-    // update page state
+    // Update page state
     const target = entities[0]
     if (target.isIntersecting) {
       setPageCount((_pageCount) => _pageCount + 1)
     }
   }
 
-  //Only gets called if the target node changes i.e when it does from a div to null and vice versa
+  // Only gets called if the target node changes i.e when it does from a div to null and vice versa
   const onRefChange = useCallback((node) => {
     const options = {
       root: null,

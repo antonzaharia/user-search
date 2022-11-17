@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+// Components
 import User from './User'
 import ArrowDownIcon from '../shared/ArrowDownIcon'
 
+// Contexts
 import { Checked } from '../../contexts/checkedUsers'
 import { Users } from '../../contexts/users'
 
