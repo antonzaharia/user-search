@@ -18,8 +18,6 @@ const UsersPanel = (props) => {
   const { checkedUsersIds } = useContext(Checked)
   const { users, visibleUsers, setVisibleUsers, usersCount, fetchUsers, setAllUsers, perPage } = useContext(Users)
 
-  const [loading, setLoading] = useState(true)
-
   useEffect(() => {
     // Loading the users on page load
     const loadUsers = async () => {
@@ -28,7 +26,6 @@ const UsersPanel = (props) => {
     }
 
     loadUsers()
-    return () => setLoading(false)
   }, [])
 
   const showMore = () => {
@@ -38,7 +35,7 @@ const UsersPanel = (props) => {
 
   const renderTable = () => {
     // Hiding the table until we load users
-    if (loading || visibleUsers.length <= 0) {
+    if (visibleUsers.length <= 0) {
       return 'Loading...'
     } else {
       // Loading first 20 users and initialize the infinite scroll

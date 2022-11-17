@@ -6,8 +6,8 @@
 - [x] Debounce the search input on `keyup` event
 - [x] Build a way to store the checked users
 - [x] Style the page
-- [ ] Refactor
-- [ ] Deploy to Firebase
+- [x] Refactor
+- [x] Deploy to Netlify
 
 ## Available Scripts
 
