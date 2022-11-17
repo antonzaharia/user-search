@@ -35,7 +35,7 @@ function SearchForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3">
+    <form onSubmit={handleSubmit} className="flex gap-3 flex-wrap justify-end">
       <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only">
         Search
       </label>

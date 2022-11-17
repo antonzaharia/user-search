@@ -70,7 +70,7 @@ function User({ user }) {
         className="flex items-center py-4 px-6 pl-0 text-gray-900 whitespace-nowrap"
       >
         <Avatar image={user.avatar} />
-        <p className="pl-3">
+        <p className="pl-3 hidden md:block">
           <span className="text-left block text-gray-600 font-normal text-md">{user.name}</span>
           <span className="block font-normal text-gray-400 text-sm">{user.email}</span>
         </p>
