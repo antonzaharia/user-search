@@ -1,7 +1,8 @@
 import React, { useState, useContext, useCallback } from 'react'
+import SearchIcon from '../shared/SearchIcon'
+
 import { Users } from '../../contexts/users'
 import { debounce } from '../../utils'
-import SearchIcon from '../shared/SearchIcon'
 
 function SearchForm() {
   const { fetchUsers, setAllUsers } = useContext(Users)
@@ -36,11 +37,8 @@ function SearchForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-3 flex-wrap justify-end">
-      <label htmlFor="default-search" className="text-sm font-medium text-gray-900 sr-only">
-        Search
-      </label>
       <div className="relative">
-        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <div className="input-icon">
           <SearchIcon />
         </div>
         <input
@@ -49,11 +47,11 @@ function SearchForm() {
           value={searchTerm}
           onChange={handleSearchTermChange}
           onKeyUp={() => debounceSearch(searchTerm)}
-          className="placeholder:text-gray-200 placeholder:text-md placeholder:leading-input block w-full p-2 pl-10 text-md text-gray-200 border border-gray-100 rounded"
+          className="search-input"
           placeholder="Search"
         />
       </div>
-      <button className="bg-blue-600 text-white rounded px-4 py-2 leading-input">Connect users</button>
+      <button className="primary-button">Connect users</button>
     </form>
   )
 }
