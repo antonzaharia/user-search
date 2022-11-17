@@ -5,7 +5,8 @@
 - [x] Build a way to search the JSON
 - [x] Debounce the search input on `keyup` event
 - [x] Build a way to store the checked users
-- [ ] Style the page
+- [x] Style the page
+- [ ] Refactor
 - [ ] Deploy to Firebase
 
 ## Available Scripts
