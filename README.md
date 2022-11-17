@@ -1,5 +1,9 @@
 # User search app
 
+Live app: [UserSearch](https://userssearch.netlify.app/)
+
+# TODO list
+
 - [x] Create a React app and load the JSON
 - [x] Infinite load the JSON file
 - [x] Build a way to search the JSON
