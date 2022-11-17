@@ -29,13 +29,6 @@ function User({ user }) {
   const handleCheckboxChange = (event) => {
     setChecked(!checked)
   }
-  const renderClass = () => {
-    if (checked) {
-      return 'bg-gray-50 rounded my-2 relative hover:cursor-pointer'
-    } else {
-      return 'bg-white rounded my-2 relative hover:cursor-pointer'
-    }
-  }
   const showAction = () => {
     if (actions) {
       return (
@@ -48,15 +41,19 @@ function User({ user }) {
   }
 
   return (
-    <tr className={renderClass()} onMouseEnter={() => setActions(true)} onMouseLeave={() => setActions(false)}>
-      <td className={checked ? 'p-4 w-1 checked' : 'p-4 w-4'}>
+    <tr
+      className={`table-row ${checked ? 'bg-gray-50' : 'bg-white'}`}
+      onMouseEnter={() => setActions(true)}
+      onMouseLeave={() => setActions(false)}
+    >
+      <td className={`p-4 w-1 ${checked ? 'checked' : ''}`}>
         <p className="flex items-center">
           <input
             id="checkbox-table-search-1"
             onChange={handleCheckboxChange}
             checked={checked}
             type="checkbox"
-            className="w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
+            className="checkbox"
           />
           <label htmlFor="checkbox-table-search-1" className="sr-only">
             checkbox
@@ -71,8 +68,8 @@ function User({ user }) {
       >
         <Avatar image={user.avatar} />
         <p className="pl-3 hidden md:block">
-          <span className="text-left block text-gray-600 font-normal text-md">{user.name}</span>
-          <span className="block font-normal text-gray-400 text-sm">{user.email}</span>
+          <span className="typography-2">{user.name}</span>
+          <span className="mute-text">{user.email}</span>
         </p>
       </th>
 

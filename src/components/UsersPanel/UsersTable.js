@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+
 import User from './User'
+import ArrowDownIcon from '../shared/ArrowDownIcon'
+
 import { Checked } from '../../contexts/checkedUsers'
 import { Users } from '../../contexts/users'
-
-import ArrowDownIcon from '../shared/ArrowDownIcon'
 
 function UsersTable(props) {
   const { users } = useContext(Users)
   const { setCheckedUsersIds } = useContext(Checked)
+
   const [checkedAll, setCheckedAll] = useState(false)
-  const renderUsers = () => props.users.map((user) => <User user={user} key={user.id} />)
 
   useEffect(() => {
     if (checkedAll) {
@@ -31,20 +32,24 @@ function UsersTable(props) {
                 id="checkbox-all-search"
                 onChange={() => setCheckedAll(!checkedAll)}
                 type="checkbox"
-                className="ml-1 w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0"
+                className="ml-1 checkbox"
               />
             </span>
           </th>
-          <th scope="col" className="normal-case py-3 px-6 pl-0 font-medium text-gray-400">
+          <th scope="col" className="typography-1 pl-0">
             User
           </th>
-          <th scope="col" className="normal-case py-3 px-6 font-medium flex gap-1 text-gray-400">
+          <th scope="col" className="typography-1 flex gap-1">
             Permission
             <ArrowDownIcon />
           </th>
         </tr>
       </thead>
-      <tbody>{renderUsers()}</tbody>
+      <tbody>
+        {props.users.map((user) => (
+          <User user={user} key={user.id} />
+        ))}
+      </tbody>
     </table>
   )
 }

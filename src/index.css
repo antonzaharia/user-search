@@ -69,4 +69,22 @@
   .primary-button {
     @apply bg-blue-600 text-white rounded px-4 py-2 leading-input;
   }
+  .button {
+    @apply bg-white flex gap-2 px-2 h-9 border rounded border-gray-100 text-md text-gray-800 items-center
+  }
+  .checkbox {
+    @apply w-5 h-5 text-blue-600 bg-white rounded border border-gray-300 focus:ring-0;
+  }
+  .typography-1 {
+    @apply normal-case py-3 px-6 font-medium text-gray-400;
+  }
+  .typography-2 {
+    @apply text-left block text-gray-600 font-normal text-md;
+  }
+  .mute-text {
+    @apply block font-normal text-gray-400 text-sm;
+  }
+  .table-row {
+    @apply rounded my-2 relative hover:cursor-pointer;
+  }
 }
