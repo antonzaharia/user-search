@@ -6,6 +6,7 @@ import blankProfile from '../../../blank_profile.png'
 function Avatar({ image }) {
   const [imageSrc, setImageSrc] = useState(blankProfile)
   useEffect(() => {
+    // Handle image load errors and add a blank profile picture
     const img = new Image()
     img.src = image
 

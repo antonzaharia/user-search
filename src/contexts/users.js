@@ -17,6 +17,7 @@ const UsersProvider = ({ children }) => {
   }, [users])
 
   const fetchUsers = async () => {
+    // Fetches and returns the users
     const response = await fetch(URL)
     const result = await response.json()
     return result['users']

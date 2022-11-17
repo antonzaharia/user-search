@@ -26,8 +26,10 @@ function UsersTable(props) {
 
   return (
     <table className="w-full text-sm text-left text-gray-500 min-h-screen">
+      {/* The table head */}
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
         <tr className="bg-white">
+          {/* Check all input */}
           <th scope="col" className="p-4">
             <span className="">
               <input
@@ -48,6 +50,7 @@ function UsersTable(props) {
         </tr>
       </thead>
       <tbody>
+        {/* The list of users */}
         {props.users.map((user) => (
           <User user={user} key={user.id} />
         ))}

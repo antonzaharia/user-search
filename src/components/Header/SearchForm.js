@@ -8,6 +8,7 @@ function SearchForm() {
   const { fetchUsers, setAllUsers } = useContext(Users)
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Filtering the collection using the term
   const filterBySearchTerm = (usersBulk, term) => {
     let regex = new RegExp(term, 'gi')
     return usersBulk.filter((user) => {
@@ -15,10 +16,12 @@ function SearchForm() {
     })
   }
 
+  // Setting the search term
   const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value)
   }
 
+  // Fetching all users and calling the search function
   const triggerSearch = async (term) => {
     const result = await fetchUsers()
     let newUsers = filterBySearchTerm(result, term)
@@ -26,11 +29,13 @@ function SearchForm() {
     setAllUsers(newUsers)
   }
 
+  // Debouncing the keyup event by half second
   const debounceSearch = useCallback(
     debounce((term) => triggerSearch(term), 500),
     []
   )
 
+  // Preventing form being submitted
   const handleSubmit = (event) => {
     event.preventDefault()
   }

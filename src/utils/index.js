@@ -1,3 +1,4 @@
+// This function creates a delay between the callbacks triggers
 const debounce = (func, delay) => {
   let timer
   return function () {

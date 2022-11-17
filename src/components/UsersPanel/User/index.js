@@ -14,6 +14,7 @@ function User({ user }) {
   const [actions, setActions] = useState(false)
 
   useEffect(() => {
+    // Update the checked collection on checked value change
     if (checked) {
       setCheckedUsersIds([...checkedUsersIds, user.id])
     } else {
@@ -23,13 +24,17 @@ function User({ user }) {
   }, [checked])
 
   useEffect(() => {
+    // Update the checked value on checked collection change
+    // Used for check all/uncheck all trigger
     setChecked(checkedUsersIds.includes(user.id))
   }, [checkedUsersIds])
 
   const handleCheckboxChange = (event) => {
     setChecked(!checked)
   }
+
   const showAction = () => {
+    // Show actions buttons on row hover
     if (actions) {
       return (
         <td className="absolute flex items-center gap-2 right-5 h-[75px]">
@@ -46,6 +51,7 @@ function User({ user }) {
       onMouseEnter={() => setActions(true)}
       onMouseLeave={() => setActions(false)}
     >
+      {/* User checkbox */}
       <td className={`p-4 w-1 ${checked ? 'checked' : ''}`}>
         <p className="flex items-center">
           <input
@@ -61,6 +67,7 @@ function User({ user }) {
         </p>
       </td>
 
+      {/* User details */}
       <th
         onClick={handleCheckboxChange}
         scope="row"
@@ -73,6 +80,7 @@ function User({ user }) {
         </p>
       </th>
 
+      {/* User role */}
       <td onClick={handleCheckboxChange} className="py-4 px-6 text-gray-900">
         <Role text={user.role} />
       </td>

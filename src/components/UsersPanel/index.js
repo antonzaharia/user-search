@@ -21,16 +21,14 @@ const UsersPanel = (props) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Loading the users on page load
     const loadUsers = async () => {
       const result = await fetchUsers()
-
       setAllUsers(result)
     }
 
     loadUsers()
-    return () => {
-      setLoading(false)
-    }
+    return () => setLoading(false)
   }, [])
 
   const showMore = () => {
@@ -39,9 +37,11 @@ const UsersPanel = (props) => {
   }
 
   const renderTable = () => {
+    // Hiding the table until we load users
     if (loading || visibleUsers.length <= 0) {
       return 'Loading...'
     } else {
+      // Loading first 20 users and initialize the infinite scroll
       return (
         <InfiniteTable
           totalCount={users.length}
@@ -57,6 +57,7 @@ const UsersPanel = (props) => {
   }
   const renderHeader = () => {
     if (checkedUsersIds.length > 0) {
+      // Render the checked count and action buttons
       return (
         <div className="p-2 flex items-center gap-6">
           <p className="py-2 text-gray-700">
@@ -69,6 +70,7 @@ const UsersPanel = (props) => {
         </div>
       )
     } else {
+      // No users checked
       return (
         <div className="p-2 flex items-center gap-6">
           <p className="py-2">No users selected</p>
